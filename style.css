@@ -1,0 +1,215 @@
+/* IMPORTAMOS LAS FUENTES DE GOOGLE */
+/* Primero la fuente mas coqueta para el titulo */
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+h1{
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+/* Segundo la fuente mas basica */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Satisfy&display=swap');
+*{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+body {
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #FFD1DC;
+}
+
+/* Aqui se hace el display de la palabra correcta despues de que termina el juego */
+.estado-juego {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+}
+
+/* Cuando termina el juego sale un pop up que indica la palabra correcta */
+.estado-juego .opcion {
+    background: white;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+/* Tamaño del GIF cuando termina el juego */
+.estado-juego img {
+    max-width: 170px;
+}
+
+/* Aqui cambiamos el texto que indica que termino el juego */
+.estado-juego h4 {
+    font-size: 1.7rem;
+    font-family: "Satisfy", cursive;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Texto que indica la palabra correcta */
+.estado-juego p {
+    font-size: 1.0rem;
+    margin: 15px 0 20px;
+    font-weight: 500;
+}
+
+/* Texto de la palabra correcta */
+.estado-juego b {
+    font-size: 1.7rem;
+    font-family: "Satisfy", cursive;
+    color: #f9446e;
+}
+
+/* Aqui cambiamos el boton de jugar denuevo */
+.estado-juego button {
+    font-size: 1.2rem;
+    padding: 2px 20px;
+    border-radius: 10px;
+}
+
+/* AQUI EMPIEZA LA PANTALLA PRINCIPAL DEL JUEGO */
+/* Aqui cambiamos el cuadro del juego */
+.juego {
+    width: 850px;
+    background: #fff;
+    /* Esto nos ayuda a que sea responsive */
+    display: flex;
+    gap: 70px;
+    align-items: flex-end;
+    padding: 60px 40px;
+    border-radius: 10px;
+}
+
+/* Aqui cambiamos el titulo del juego (El Ahorcadette) */
+.ahorcado h1{
+    font-size: 1.8rem;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Aqui cambiamos el estilo de la horca */
+.figura {
+    fill: transperent;
+    stroke: black;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    max-width: 270px;
+}  
+
+/* Aqui cambiamos el estilo de las partes del cuerpo */
+.parte-cuerpo {
+    fill: transparent;
+    stroke:#FFD1DC;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    max-width: 270px;
+}
+
+/* Se esconde las partes del cuerpo ya que es dinamico */
+.parte-cuerpo {
+    display: none;
+}
+
+/* Aqui cambiamos como se muestra la casilla para ingresar la palabra */
+.mostrar-palabra {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Aqui cambiamos el aspecto de las casillas donde van las letras */
+.mostrar-palabra .letra {
+    width: 28px;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #f9446e;
+}
+
+/* Aqui cambiamos como se ve una letra despues de que fue adivinada */
+/* Se debe eliminar la linea de abajo */
+.mostrar-palabra .letra.adivinada { 
+    border-color: transparent;
+    margin: -40px 0 3px;
+}
+
+/* Aqui cambiamos como se ve el texto de la pista y de los intentos que lleva el usuario */
+.detalles-juego h4 {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.detalles-juego h4 b {
+    font-weight: 500;
+}
+
+.detalles-juego .intentos b {
+    color:  #f9446e;
+}
+
+/* Aqui cambiamos como se ve el teclado */
+.detalles-juego .teclado {
+    display: flex;
+    margin-top: 40px;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+:where(.estado-juego, .teclado) button {
+    color: #f9446e;
+    background: #FFD1DC;
+    cursor: pointer;
+    outline: none;
+    padding: 3px;
+    border-color: #f9446e;
+    border-radius: 7px;
+    font-size: 1rem; 
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Aqui cambiamos como se ve el boton de cada letra */
+.teclado button {
+    padding: 3px;
+    width: calc(100% / 9 - 5px); /* Esto permite que sea responsive y el tamaño dependa de la pantalla*/
+}
+
+/* Aqui hacemos que para cuando se pase el cursor por encima del teclado, se sepa cual letra esta siendo seleccionada */
+/* Con el where, tenemos que esta opcion tambien la siga el boton que permite jugar denuevo */
+:where(.estado-juego, .teclado) button:hover {
+    background: white;
+}
+
+/* Para que sea responsive, agregamos las siguientes lineas*/
+@media (max-width: 782px) {
+    .juego {
+        flex-direction: column;
+        padding: 30px 15px;
+        align-items: center;
+    }
+    .figura {
+        max-width: 200px;
+    }
+    .ahorcado h1 {
+        display: none
+    }
+}
