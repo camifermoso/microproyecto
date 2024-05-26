@@ -24,6 +24,17 @@ body {
     background: #FFD1DC;
 }
 
+/* Aqui cambiamos el titulo principal */
+.titulo h1 {
+    position: absolute;
+    top: 20px;
+    right: 200px;
+    font-family: "Satisfy", cursive;
+    color: #f9446e;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
 /* Aqui se hace el display de la palabra correcta despues de que termina el juego */
 .estado-juego {
     position: fixed;
@@ -225,14 +236,26 @@ body {
     .figura {
         max-width: 200px;
     }
+    /* si la pantalla esta muy pequeña, no queremos que se muestre todo */
     .ahorcado h1 {
         display: none
+    }
+    .titulo h1 {
+        display: none;
+    }
+    .sistema-puntos {
+        display: none;
+    }
+    .nombres {
+        display: none;
     }
 }
 
 /* Cambiando la localización de nuestros nombres */
 .nombres h2 {
     color:#f9446e;
+    bottom: 20px;
+    right: 20px;
     position: absolute;
     bottom: 0px;
     display: flex;
@@ -240,6 +263,7 @@ body {
     justify-content: center;
     font-family: "Satisfy", cursive;
     font-size: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .parte-cuerpo {
@@ -249,8 +273,8 @@ body {
 .victorias {
     position: absolute;
     top: 20px;
-    right: 20px;
-    background-color: #FFD1DC;
+    right: 30px;
+    background-color: white;
     color: #f9446e;
     padding: 10px;
     border-radius: 10px;
@@ -258,11 +282,12 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
 .puntos {
     position: absolute;
     top: 60px; /* Ajusta esta posición para que quede justo debajo de las victorias */
-    right: 20px;
-    background-color: #FFD1DC;
+    right: 30px;
+    background-color: white;
     color: #f9446e;
     padding: 10px;
     border-radius: 10px;
@@ -286,4 +311,32 @@ body {
     animation: balanceo 1s infinite;
 }
 
+/* Aqui cambiamos los elementos de la tabla que muestra el sistema de puntos */
+.sistema-puntos {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    padding: 10px;
+    font-family: "Satisfy", cursive;
+    font-size: 1rem;
+    font-weight: bold;
+}
 
+.sistema-puntos table {
+    border-color: #f9446e;
+    background-color: white;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+th {
+    font-family: "Satisfy", cursive;
+    color: #f9446e;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
