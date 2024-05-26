@@ -71,7 +71,7 @@ for (let index = 97; index <= 122; index++) {
     const buttonO = document.createElement("button");
     buttonO.innerText = "o";
     tecladoDiv.appendChild(buttonO);
-    buttonÑ.addEventListener("click", e => initGame(e.target, "o"));
+    buttonO.addEventListener("click", e => initGame(e.target, "o"));
     }
 
 }

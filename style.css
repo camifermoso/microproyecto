@@ -193,6 +193,12 @@ body {
     width: calc(100% / 9 - 5px); /* Esto permite que sea responsive y el tamaño dependa de la pantalla*/
 }
 
+.teclado button[disabled]{
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+
 /* Aqui hacemos que para cuando se pase el cursor por encima del teclado, se sepa cual letra esta siendo seleccionada */
 /* Con el where, tenemos que esta opcion tambien la siga el boton que permite jugar denuevo */
 :where(.estado-juego, .teclado) button:hover {
