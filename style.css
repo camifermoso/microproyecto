@@ -249,6 +249,9 @@ body {
     .nombres {
         display: none;
     }
+    .reiniciar-juego button {
+        display: none;
+    }
 }
 
 /* Cambiando la localización de nuestros nombres */
@@ -339,4 +342,19 @@ th {
 
 td {
     text-align: center;
+}
+
+/* Boton del reinicio de juego */
+.reiniciar-juego button {
+    background-color: white;
+    font-family: "Satisfy", cursive;
+    color: #f9446e;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    border-color: transparent;
+    border-radius: 8px;
+    position: absolute;
+    top: 30px;
+    left: 210px;
 }

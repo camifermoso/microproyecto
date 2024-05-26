@@ -5,6 +5,7 @@ const textoAdivinar = document.querySelector(".intentos");
 const tecladoDiv = document.querySelector(".teclado");
 const estadoJuego = document.querySelector(".estado-juego");
 const jugarDeNuevo = document.querySelector(".jugar-denuevo");
+const reiniciar = document.querySelector(".reiniciar");
 
 var bien = new Audio("correct.mp3");
 
@@ -37,6 +38,17 @@ const resetearJuego = () => {
 
 // Para agarrar una palabra de la lista de palabras de forma aleatoria
 const agarrarPalabra = () => {
+    const { palabra, pista } = listaPalabras[Math.floor(Math.random() * listaPalabras.length)];
+    palabraActual = palabra;
+    console.log(palabra);
+    document.querySelector(".pista b").innerText = pista;
+    resetearJuego();
+}
+
+// Cuando queremos hacer un reincio
+const paraReiniciar = () => {
+    victorias = 0
+    puntos = 0
     const { palabra, pista } = listaPalabras[Math.floor(Math.random() * listaPalabras.length)];
     palabraActual = palabra;
     console.log(palabra);
@@ -133,3 +145,4 @@ for (let index = 97; index <= 122; index++) {
 
 agarrarPalabra();
 jugarDeNuevo.addEventListener("click", agarrarPalabra);
+reiniciar.addEventListener("click", paraReiniciar);
