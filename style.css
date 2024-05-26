@@ -31,11 +31,21 @@ body {
     top: 0;
     height: 100%;
     width: 100%;
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(0,0,0,0.6);
+    transition: opacity 0.4s ease;
 }
+
+.estado-juego.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 
 /* Cuando termina el juego sale un pop up que indica la palabra correcta */
 .estado-juego .opcion {
@@ -235,3 +245,45 @@ body {
 .parte-cuerpo {
     display: none;
 }
+
+.victorias {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #FFD1DC;
+    color: #f9446e;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: "Satisfy", cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.puntos {
+    position: absolute;
+    top: 60px; /* Ajusta esta posición para que quede justo debajo de las victorias */
+    right: 20px;
+    background-color: #FFD1DC;
+    color: #f9446e;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: "Satisfy", cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+/* Aquí definimos la animación de balanceo */
+@keyframes balanceo {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Aplicamos la animación al muñeco cuando pierde */
+.balanceo {
+    animation: balanceo 1s infinite;
+}
+
+
