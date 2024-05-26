@@ -36,26 +36,31 @@
         <div class="ahorcado">
             <h1>El Ahorcadette 🎀</h1> 
             <svg height="250" width="200" class="figura">
-                <!-- Horca (tenemos varias lineas que componen la horca) -->
-                <line x1="70" y1="20" x2="140" y2="20"/>
-                <line x1="140" y1="20" x2="140" y2="50"/>
-                <line x1="70" y1="20" x2="70" y2="230"/>
-                <line x1="30" y1="230" x2="110" y2="230"/>
-    
-                <!-- Cabeza (un circulo) -->
-                <circle cx="140" cy="70" r="20" class="parte-cuerpo"/>
-    
-                <!-- Cuerpo -->
-                <line x1="140" y1="90" x2="140" y2="150" class="parte-cuerpo"/>
-    
-                <!-- Brazos -->
-                <line x1="140" y1="120" x2="120" y2="100" class="parte-cuerpo"/>
-                <line x1="140" y1="120" x2="160" y2="100" class="parte-cuerpo"/>
-    
-                <!-- Piernas -->
-                <line x1="140" y1="150" x2="120" y2="180" class="parte-cuerpo"/>
-                <line x1="140" y1="150" x2="160" y2="180" class="parte-cuerpo"/>
-            </svg>  
+              <!-- Horca (tenemos varias lineas que componen la horca) -->
+              <line x1="70" y1="20" x2="140" y2="20"/>
+              <line x1="140" y1="20" x2="140" y2="50"/>
+              <line x1="70" y1="20" x2="70" y2="230"/>
+              <line x1="30" y1="230" x2="110" y2="230"/>
+          
+              <!-- Cabeza (un circulo) -->
+              <circle id="head" cx="140" cy="70" r="20" class="parte-cuerpo"/>
+          
+              <!-- Cuerpo -->
+              <line id="body" x1="140" y1="90" x2="140" y2="150" class="parte-cuerpo"/>
+          
+              <!-- Brazos -->
+              <line id="left-arm" x1="140" y1="120" x2="120" y2="100" class="parte-cuerpo"/>
+              <line id="right-arm" x1="140" y1="120" x2="160" y2="100" class="parte-cuerpo"/>
+          
+              <!-- Piernas -->
+              <line id="left-leg" x1="140" y1="150" x2="120" y2="180" class="parte-cuerpo"/>
+              <line id="right-leg" x1="140" y1="150" x2="160" y2="180" class="parte-cuerpo"/>
+
+              <!-- Lazo  -->
+              <image id="lazo" href="imagenes/lazo.png" x="125" y="45" height="30" width="30" class="parte-cuerpo" />
+
+          </svg>
+          
         </div>
         <!-- Para dibujar los elementos de la figura del ahorcado -->
         <div class="detalles-juego">

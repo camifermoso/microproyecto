@@ -225,3 +225,7 @@ body {
     font-family: "Satisfy", cursive;
     font-size: 1.5rem;
 }
+
+.parte-cuerpo {
+    display: none;
+}
