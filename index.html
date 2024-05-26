@@ -7,9 +7,21 @@
     <meta name = "viewport" content="width=device-width, initial-scale=1.0"> <!--Responsive-->
     <title>El Ahorcadette 🎀</title>
     <link rel="stylesheet" href="style.css">
+    <script src = "scripts/palabras.js" defer></script>
+    <script src = "scripts/script.js" defer></script>
 </head>
 
 <body>
+    <!-- Musica de fondo -->
+    <audio id="cancion">
+        <source src ="snowonthebeach.mp3">
+    </audio>
+    <script>
+        window.addEventListener('click', () => {
+            document.getElementById("cancion").play();
+        });
+    </script>
+    <!-- Ventana op up al final del juego -->
     <div class="estado-juego">
         <div class="opcion">
             <img src="imagenes/mariemean.gif" alt="gif">
@@ -18,7 +30,8 @@
             <button class="jugar-denuevo">Jugar Denuevo</button>
         </div>
     </div>
-    
+
+    <!-- Juego -->
     <div class="juego">
         <div class="ahorcado">
             <h1>El Ahorcadette 🎀</h1> 
@@ -46,15 +59,7 @@
         </div>
         <!-- Para dibujar los elementos de la figura del ahorcado -->
         <div class="detalles-juego">
-            <ul class="mostrar-palabra">
-                <li class="letra"></li>
-                <li class="letra"></li>
-                <li class="letra adivinada">a</li>
-                <li class="letra"></li>
-                <li class="letra"></li>
-                <li class="letra"></li>
-                <li class="letra"></li>
-            </ul>
+            <ul class="mostrar-palabra"></ul>
             <h4 class="pista">
                 Pista: <b>es la mejor cantante del mundo</b>
             </h4>
@@ -63,14 +68,13 @@
                 Intentos: <b>0/7</b>
             </h4>
 
-            <div class="teclado">
-                <button>a</button> <button>b</button> <button>c</button> <button>d</button> <button>e</button> <button>f</button> <button>g</button> <button>h</button> <button>i</button>
-                <button>j</button> <button>k</button> <button>l</button> <button>m</button> <button>n</button> <button>ñ</button> <button>o</button> <button>p</button> <button>q</button>
-                <button>r</button> <button>s</button> <button>t</button> <button>u</button> <button>v</button> <button>w</button> <button>x</button> <button>y</button> <button>z</button>
-            </div>
+            <div class="teclado"></div>
         </div>
     </div>
 
+    <div class ="nombres">
+        <h2>Creado por: Camila Fermoso y Cristian Gouveia</h2>
+    </div>
 </body>
 
 </html>
