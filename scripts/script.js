@@ -3,22 +3,45 @@ const monigote = document.querySelector(".ahorcado");
 const mostrarPalabra = document.querySelector(".mostrar-palabra");
 const textoAdivinar = document.querySelector(".intentos");
 const tecladoDiv = document.querySelector(".teclado");
+const estadoJuego = document.querySelector(".estado-juego");
+const jugarDeNuevo = document.querySelector(".jugar-denuevo");
 
 const ponerMusica = document.getElementById("cancion");
 
-let palabraActual, equivocaciones = 0;
+let palabraActual, letrasCorrectas, equivocaciones, victorias = 0, puntos = 0;
 const maxEquivocaciones = 7;
+
+const resetearJuego = () => {
+    letrasCorrectas = [];
+    equivocaciones = 0;
+    textoAdivinar.innerText = `${equivocaciones} / ${maxEquivocaciones}`;
+    mostrarPalabra.innerHTML = palabraActual.split("").map(() => '<li class="letra"></li>').join("");
+    estadoJuego.classList.remove("show");
+
+    // Ocultar todas las partes del cuerpo del monigote
+    const partesCuerpo = ["head", "body", "left-arm", "right-arm", "left-leg", "right-leg", "lazo"];
+    partesCuerpo.forEach(parte => {
+        document.getElementById(parte).style.display = "none";
+    });
+
+    // Habilitar todos los botones del teclado
+    const botones = tecladoDiv.querySelectorAll("button");
+    botones.forEach(button => {
+        button.disabled = false;
+    });
+
+    // Actualizar contador de victorias y puntos
+    document.querySelector(".victorias").innerText = `Victorias: ${victorias}`;
+    document.querySelector(".puntos").innerText = `Puntos: ${puntos}`;
+}
 
 // Para agarrar una palabra de la lista de palabras de forma aleatoria
 const agarrarPalabra = () => {
     const { palabra, pista } = listaPalabras[Math.floor(Math.random() * listaPalabras.length)];
-    palabraActual = palabra
+    palabraActual = palabra;
     console.log(palabra);
     document.querySelector(".pista b").innerText = pista;
-
-    // Para que segun la palabra seleccionada, se creen los espacios en blanco dependiendo de cuantas letras tenga la palabra
-    mostrarPalabra.innerHTML = palabra.split("").map(() => '<li class="letra"></li>').join("");
-
+    resetearJuego();
 }
 
 const actualizarMonigote = () => {
@@ -28,6 +51,26 @@ const actualizarMonigote = () => {
     });
 };
 
+const gameOver = (isVictory) => {
+    // Después de 300ms del final del juego, mostrar el modal con los detalles relevantes
+    setTimeout(() => {
+        const modalText = isVictory ? `¡Encontraste la palabra!` : `La palabra correcta era:`;
+        estadoJuego.querySelector("img").src = `imagenes/${isVictory ? 'mariehappy' : 'mariemean'}.gif`;
+        estadoJuego.querySelector("h4").innerText = `${isVictory ? '¡Felicidades!' : '¡Juego Terminado!'}`;
+        estadoJuego.querySelector("p").innerHTML = `${modalText} <b>${palabraActual}</b>`;
+        estadoJuego.classList.add("show");
+
+        if (isVictory) {
+            victorias++;
+            puntos += 5; // Añadir puntos por victoria
+        } else {
+            puntos -= 5; // Restar puntos por derrota
+        }
+        document.querySelector(".victorias").innerText = `Victorias: ${victorias}`;
+        document.querySelector(".puntos").innerText = `Puntos: ${puntos}`;
+    }, 300);
+}
+
 
 
 const initGame = (button, clickedLetter) => {
@@ -36,22 +79,31 @@ const initGame = (button, clickedLetter) => {
     if (palabraActual.includes(clickedLetter)) {
         [...palabraActual].forEach((letra, index) => {
             if (letra === clickedLetter) {
+                if (!letrasCorrectas.includes(letra)) {
+                    letrasCorrectas.push(letra);
+                    puntos++; // Añadir un punto por letra correcta
+                }
                 mostrarPalabra.querySelectorAll("li")[index].innerText = letra;
                 mostrarPalabra.querySelectorAll("li")[index].classList.add("guessed");
             }
         });
+        document.querySelector(".puntos").innerText = `Puntos: ${puntos}`;
     } else {
         equivocaciones++;
         actualizarMonigote();
         if (equivocaciones === maxEquivocaciones) {
-            // Muestra el mensaje de fin de juego y la palabra correcta
-            document.querySelector(".estado-juego").style.display = "flex";
-            document.querySelector(".estado-juego .opcion p b").innerText = palabraActual;
+            gameOver(false);
         }
     }
     button.disabled = true;
     textoAdivinar.innerText = `${equivocaciones} / ${maxEquivocaciones}`;
+
+    // El juego se termina si se cumple alguna de estas condiciones
+    if (letrasCorrectas.length === new Set(palabraActual).size) {
+        gameOver(true);
+    }
 };
+
 
 
 // Creamos los botones del teclado
@@ -79,3 +131,4 @@ for (let index = 97; index <= 122; index++) {
 
 
 agarrarPalabra();
+jugarDeNuevo.addEventListener("click", agarrarPalabra);
