@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <div class="titulo">
+        <h1>El Ahorcadette 🎀</h1>
+    </div>
     <!-- Musica de fondo -->
     <audio id="cancion">
         <source src ="snowonthebeach.mp3">
@@ -19,9 +22,11 @@
     <script>
         window.addEventListener('click', () => {
             document.getElementById("cancion").play();
+            audio.volume = 0.2;
         });
     </script>
-    <!-- Ventana op up al final del juego -->
+
+    <!-- Ventana pop up al final del juego -->
     <div class="estado-juego">
         <div class="opcion">
             <img src="imagenes/mariemean.gif" alt="gif">
@@ -31,14 +36,34 @@
         </div>
     </div>
 
+    <!-- Aqui se muestra como la tabla que indica la forma del puntuaje -->
     <div class="victorias">Victorias: 0</div>
     <div class="puntos">Puntos: 0</div>
-
+    <div class ="sistema-puntos">
+        <table>
+            <tr>
+                <th>Juego</th>
+                <th>Puntos</th>
+            </tr>
+            <tr>
+                <td>Victoria</td>
+                <td>+5</td>
+            </tr>
+            <tr>
+                <td>Derrota</td>
+                <td>-5</td>
+            </tr>
+            <tr>
+                <td>Letra Correcta</td>
+                <td>+1</td>
+            </tr>
+        </table>
+    </div>
 
     <!-- Juego -->
     <div class="juego">
         <div class="ahorcado">
-            <h1>El Ahorcadette 🎀</h1> 
+            <h1>🎀🎀🎀</h1> 
             <svg height="250" width="200" class="figura">
               <!-- Horca (tenemos varias lineas que componen la horca) -->
               <line x1="70" y1="20" x2="140" y2="20"/>

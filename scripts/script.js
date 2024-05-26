@@ -6,7 +6,7 @@ const tecladoDiv = document.querySelector(".teclado");
 const estadoJuego = document.querySelector(".estado-juego");
 const jugarDeNuevo = document.querySelector(".jugar-denuevo");
 
-const ponerMusica = document.getElementById("cancion");
+var bien = new Audio("correct.mp3");
 
 let palabraActual, letrasCorrectas, equivocaciones, victorias = 0, puntos = 0;
 const maxEquivocaciones = 7;
@@ -14,7 +14,7 @@ const maxEquivocaciones = 7;
 const resetearJuego = () => {
     letrasCorrectas = [];
     equivocaciones = 0;
-    textoAdivinar.innerText = `${equivocaciones} / ${maxEquivocaciones}`;
+    textoAdivinar.innerText = `Intentos: ${equivocaciones} / ${maxEquivocaciones}`;
     mostrarPalabra.innerHTML = palabraActual.split("").map(() => '<li class="letra"></li>').join("");
     estadoJuego.classList.remove("show");
 
@@ -54,7 +54,7 @@ const actualizarMonigote = () => {
 const gameOver = (isVictory) => {
     // Después de 300ms del final del juego, mostrar el modal con los detalles relevantes
     setTimeout(() => {
-        const modalText = isVictory ? `¡Encontraste la palabra!` : `La palabra correcta era:`;
+        const modalText = isVictory ? `Encontraste la palabra:` : `La palabra correcta era:`;
         estadoJuego.querySelector("img").src = `imagenes/${isVictory ? 'mariehappy' : 'mariemean'}.gif`;
         estadoJuego.querySelector("h4").innerText = `${isVictory ? '¡Felicidades!' : '¡Juego Terminado!'}`;
         estadoJuego.querySelector("p").innerHTML = `${modalText} <b>${palabraActual}</b>`;
@@ -82,6 +82,7 @@ const initGame = (button, clickedLetter) => {
                 if (!letrasCorrectas.includes(letra)) {
                     letrasCorrectas.push(letra);
                     puntos++; // Añadir un punto por letra correcta
+                    bien.play(); //Suena que esta bien
                 }
                 mostrarPalabra.querySelectorAll("li")[index].innerText = letra;
                 mostrarPalabra.querySelectorAll("li")[index].classList.add("guessed");
