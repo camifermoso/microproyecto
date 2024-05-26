@@ -2,11 +2,120 @@
 <html>
 
 <head>
-    <title>EL Ahorcado Testing</title>
+    <meta charset="UTF-8"> <!-- Nos permite usar los caracteres de Unicode  -->
+    <meta http-equiv= "X-UA-Compatible" content= "IE=edge">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0"> <!--Responsive-->
+    <title>El Ahorcadette 🎀</title>
+    <link rel="stylesheet" href="style.css">
+    <script src = "scripts/palabras.js" defer></script>
+    <script src = "scripts/script.js" defer></script>
 </head>
 
 <body>
-  
+    <div class="titulo">
+        <h1>El Ahorcadette 🎀</h1>
+    </div>
+    <!-- Musica de fondo -->
+    <audio id="cancion">
+        <source src ="snowonthebeach.mp3">
+    </audio>
+    <script>
+        window.addEventListener('click', () => {
+            document.getElementById("cancion").play();
+            audio.volume = 0.2;
+        });
+    </script>
+
+    <!-- Ventana pop up al final del juego -->
+    <div class="estado-juego">
+        <div class="opcion">
+            <img src="imagenes/mariemean.gif" alt="gif">
+            <h4>Terminette!</h4>
+            <p>La palabra correcta era: <b>oseaaaa</b></p>
+            <button class="jugar-denuevo">Jugar De nuevo</button>
+        </div>
+    </div>
+
+    <!-- Boton de reiniciar el juego -->
+    <div class="reiniciar-juego">
+        <div class="opcion">
+            <button class="reiniciar">Reiniciar</button>
+        </div>
+    </div>
+
+    <!-- Aqui se muestra como la tabla que indica la forma del puntuaje -->
+    <div class="victorias">Victorias: 0</div>
+    <div class="puntos">Puntos: 0</div>
+    <div class ="sistema-puntos">
+        <table>
+            <tr>
+                <th>Juego</th>
+                <th>Puntos</th>
+            </tr>
+            <tr>
+                <td>Victoria</td>
+                <td>+5</td>
+            </tr>
+            <tr>
+                <td>Derrota</td>
+                <td>-5</td>
+            </tr>
+            <tr>
+                <td>Letra Correcta</td>
+                <td>+1</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Juego -->
+    <div class="juego">
+        <div class="ahorcado">
+            <h1>🎀🎀🎀</h1> 
+            <svg height="250" width="200" class="figura">
+              <!-- Horca (tenemos varias lineas que componen la horca) -->
+              <line x1="70" y1="20" x2="140" y2="20"/>
+              <line x1="140" y1="20" x2="140" y2="50"/>
+              <line x1="70" y1="20" x2="70" y2="230"/>
+              <line x1="30" y1="230" x2="110" y2="230"/>
+          
+              <!-- Cabeza (un circulo) -->
+              <circle id="head" cx="140" cy="70" r="20" class="parte-cuerpo"/>
+          
+              <!-- Cuerpo -->
+              <line id="body" x1="140" y1="90" x2="140" y2="150" class="parte-cuerpo"/>
+          
+              <!-- Brazos -->
+              <line id="left-arm" x1="140" y1="120" x2="120" y2="100" class="parte-cuerpo"/>
+              <line id="right-arm" x1="140" y1="120" x2="160" y2="100" class="parte-cuerpo"/>
+          
+              <!-- Piernas -->
+              <line id="left-leg" x1="140" y1="150" x2="120" y2="180" class="parte-cuerpo"/>
+              <line id="right-leg" x1="140" y1="150" x2="160" y2="180" class="parte-cuerpo"/>
+
+              <!-- Lazo  -->
+              <image id="lazo" href="imagenes/lazo.png" x="125" y="45" height="30" width="30" class="parte-cuerpo" />
+
+          </svg>
+          
+        </div>
+        <!-- Para dibujar los elementos de la figura del ahorcado -->
+        <div class="detalles-juego">
+            <ul class="mostrar-palabra"></ul>
+            <h4 class="pista">
+                Pista: <b>es la mejor cantante del mundo</b>
+            </h4>
+
+            <h4 class="intentos">
+                Intentos: <b>0/7</b>
+            </h4>
+
+            <div class="teclado"></div>
+        </div>
+    </div>
+
+    <div class ="nombres">
+        <h2>Creado por: Camila Fermoso y Cristian Gouveia</h2>
+    </div>
 </body>
 
 </html>
